@@ -14,7 +14,7 @@ jobs:
         run: |
           docker build -t anun .
           docker run -d -p 5050:5050 --name anun anun:latest 
-          docker exec anun /bin/bash "echo $?"
+          docker exec -it anun /bin/bash -c "echo $?"
           docker stop anun
           docker rm anun
            

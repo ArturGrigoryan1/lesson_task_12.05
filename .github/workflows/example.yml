@@ -14,7 +14,7 @@ jobs:
         run: |
           docker build -t anun .
           docker run -d -p 5050:5050 --name anun anun:latest 
-          docker ps
+          docker exec anun /bin/bash echo $?
           docker stop anun
       - name: 'Login to Docker Hub'
         uses: docker/login-action@v3

@@ -21,7 +21,7 @@ jobs:
 
           exit_code=`docker exec -i anun /bin/bash -c "echo $?"`
           echo "::add-mask::$exit_code"
-          echo "number=$exit_code" >> "$GITHUB_OUTPUT"
+          echo "number=$exit_code" >> $GITHUB_ENV
           echo "$number"
           echo "${{ steps.env.outputs.number }}"
           docker stop anun

@@ -24,13 +24,14 @@ jobs:
           
       - name: Use that super output
         run: |
-          if [[ $exit_code == 0 ]]
+          if [[ $exit_code == {0} ]]
           then
             echo "ha chisht a"
           else 
             echo "che mi ban en chi"
           fi
-#  echo "MER GCACY KLINI ${{ steps.env.outputs.exit_code }}"
+          echo "MER GCACY KLINI ${{ steps.env.outputs.exit_code }}"
+          echo "kam el senc $exit_code"
 
           
       - name: 'Login to Docker Hub'

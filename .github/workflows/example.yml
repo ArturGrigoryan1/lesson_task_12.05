@@ -6,13 +6,15 @@ on:
 jobs:
   build_and_push:
     runs-on: self-hosted
-    env:
-      exit_code : 1
+    outputs:
+      env: ${{ steps.env.outputs.exit_code }}
+        
     steps:
       - name: 'Checkout'
         uses: actions/checkout@v4
       
       - name: 'Run our images'
+        id: env
         run: |
           docker build -t anun .
           docker run -d -p 5050:5050 --name anun anun:latest 

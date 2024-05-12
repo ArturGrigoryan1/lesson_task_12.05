@@ -7,7 +7,7 @@ jobs:
   build_and_push:
     runs-on: self-hosted
     outputs:
-      env: ${{ steps.env.outputs.exit_code }}
+      env: ${{ steps.env.outputs.number }}
         
     steps:
       - name: 'Checkout'

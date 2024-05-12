@@ -6,16 +6,19 @@ on:
 jobs:
   build_and_push:
     runs-on: self-hosted
+    env:
+      exit_code : 1
     steps:
       - name: 'Checkout'
         uses: actions/checkout@v4
-
+      - name: 'stugel'
+        run: echo "$exit_code"
+        
       - name: 'Run our images'
         run: |
           docker build -t anun .
           docker run -d -p 5050:5050 --name anun anun:latest 
-          env:
-            exit_code: `docker exec -i anun /bin/bash -c "echo $?"` 
+          $exit_code = `docker exec -i anun /bin/bash -c "echo $?"` 
           docker stop anun
           docker rm anun
 

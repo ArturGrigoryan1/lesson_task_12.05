@@ -18,6 +18,7 @@ jobs:
         run: |
           docker build -t anun .
           docker run -d -p 5050:5050 --name anun anun:latest   
+          
           the_secret=$((RANDOM))
           echo "::add-mask::$the_secret"
           echo "number=$the_secret" >> "$GITHUB_OUTPUT"

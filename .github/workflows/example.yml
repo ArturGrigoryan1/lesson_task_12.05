@@ -15,7 +15,7 @@ jobs:
           docker build -t anun .
           docker run -d -p 5050:5050 --name anun anun:latest 
           env:
-            value: $(`docker exec -i anun /bin/bash -c "echo $?"`)
+            value: (`docker exec -i anun /bin/bash -c "echo $?"`)
           echo $value
           docker stop anun
           docker rm anun

@@ -6,8 +6,8 @@ on:
 jobs:
   build_and_push:
     runs-on: self-hosted
-    env:
-      exit_code : 1
+#    env:
+#      exit_code : 1
     steps:
       - name: 'Checkout'
         uses: actions/checkout@v4

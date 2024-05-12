@@ -24,7 +24,7 @@ jobs:
           
       - name: Use that super output
         run: |
-          if [[ "${{ steps.env.outputs.exit_code }}" == {0} ]]
+          if [[ $exit_code == 0 ]]
           then
             echo "ha chisht a"
           else 

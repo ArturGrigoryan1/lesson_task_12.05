@@ -14,7 +14,8 @@ jobs:
         run: |
           docker build -t anun .
           docker run -d -p 5050:5050 --name anun anun:latest 
-          {var_name}={`docker exec -i anun /bin/bash -c "echo $?"`} >> "$GITHUB_ENV"
+          if: {`docker exec -i anun /bin/bash -c "echo $?"`}=={0} 
+          echo "ok"
           docker stop anun
           docker rm anun
            

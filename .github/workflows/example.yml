@@ -18,8 +18,8 @@ jobs:
         run: |
           docker build -t anun .
           docker run -d -p 5050:5050 --name anun anun:latest   
-          echo "{exit_code}={echo "`docker exec -i anun /bin/bash -c "echo $?"`"}" >> $GITHUB_ENV
-          echo "$exit_code"
+          echo "{exit_code}={`docker exec -i anun /bin/bash -c "echo $?"`}" >> $GITHUB_ENV
+          echo "${{ steps.env.outputs.exit_code }}"
           docker stop anun
           docker rm anun
         # echo "`docker exec -i anun /bin/bash -c "echo $?"`"

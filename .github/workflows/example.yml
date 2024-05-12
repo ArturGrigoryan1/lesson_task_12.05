@@ -6,8 +6,8 @@ on:
 jobs:
   build_and_push:
     runs-on: self-hosted
-    outputs:
-      env: ${{ steps.env.outputs.number }}
+#    outputs:
+#      env: ${{ steps.env.outputs.number }}
         
     steps:
       - name: 'Checkout'
@@ -22,7 +22,8 @@ jobs:
           exit_code=`docker exec -i anun /bin/bash -c "echo $?"`
           echo "::add-mask::$exit_code"
           echo "number=$exit_code" >> "$GITHUB_OUTPUT"
-          echo "${{ steps.env.outputs.number }}"
+          echo "MER GCACY KLINI ${{ steps.env.outputs.number }}"
+          
           docker stop anun
           docker rm anun
           

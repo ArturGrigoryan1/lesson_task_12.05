@@ -21,7 +21,7 @@ jobs:
           
           the_secret=$((RANDOM))
           echo "::add-mask::$the_secret"
-          echo "number=$the_secret" >> "$GITHUB_OUTPUT"
+          echo "number=$the_secret" >> $GITHUB_ENV
           
           docker stop anun
           docker rm anun

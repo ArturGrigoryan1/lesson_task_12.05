@@ -22,9 +22,12 @@ jobs:
           the_secret=$((RANDOM))
           echo "::add-mask::$the_secret"
           echo "number=$the_secret" >> "$GITHUB_OUTPUT"
-          echo "MER GCACY KLINI ${{ steps.env.outputs.number }}"
+          
           docker stop anun
           docker rm anun
+      - name: Use that secret output
+        run: |
+          echo "MER GCACY KLINI ${{ steps.env.outputs.number }}"
           
         # echo "{exit_code}={`docker exec -i anun /bin/bash -c "echo $?"`}" >> $GITHUB_ENV
         # echo "${{ steps.env.outputs.exit_code }}"

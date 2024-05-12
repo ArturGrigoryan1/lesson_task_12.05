@@ -7,7 +7,7 @@ jobs:
   build_and_push:
     runs-on: self-hosted
     outputs:
-      env: ${{ steps.env.outputs.number }}
+      env: ${{ steps.env.outputs.exit_code }}
         
     steps:
       - name: 'Checkout'
@@ -18,16 +18,16 @@ jobs:
         run: |
           docker build -t anun .
           docker run -d -p 5050:5050 --name anun anun:latest   
-          
-          the_secret=$((RANDOM))
-          echo "::add-mask::$the_secret"
-          echo "number=$the_secret" >> $GITHUB_ENV
+
+          echo "{exit_code}={`docker exec -i anun /bin/bash -c "echo $?"`}" >> $GITHUB_ENV
+
+          echo "bayc irakanum`docker exec -i anun /bin/bash -c "echo $?"`"
           
           docker stop anun
           docker rm anun
-      - name: Use that secret output
+      - name: Use that super output
         run: |
-          echo "MER GCACY KLINI ${{ steps.env.outputs.number }}"
+          echo "MER GCACY KLINI ${{ steps.env.outputs.exit_code }}"
           
         # echo "{exit_code}={`docker exec -i anun /bin/bash -c "echo $?"`}" >> $GITHUB_ENV
         # echo "${{ steps.env.outputs.exit_code }}"

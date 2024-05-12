@@ -18,10 +18,9 @@ jobs:
         run: |
           docker build -t anun .
           docker run -d -p 5050:5050 --name anun anun:latest   
-          exit_code=0
-          echo "exit cody klini ${{exit_code}}"
-          echo "::add-mask::$exit_code"
-          echo "number=$exit_code" >> "$GITHUB_OUTPUT"
+          the_secret=$((RANDOM))
+          echo "::add-mask::$the_secret"
+          echo "number=$the_secret" >> "$GITHUB_OUTPUT"
           echo "MER GCACY KLINI ${{ steps.env.outputs.number }}"
           docker stop anun
           docker rm anun
